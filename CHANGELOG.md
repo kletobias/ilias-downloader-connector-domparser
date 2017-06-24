@@ -3,7 +3,7 @@
 
 ### BREAKING CHANGES
 
-* The Maven coordinates in JitPack have changed to `com.github.thetric`  (group ID) and `ilias-downloader-connector-api` (artifact ID)
+* The Maven coordinates in JitPack have changed to `com.github.thetric`  (group ID) and `ilias-downloader-connector-domparser` (artifact ID)
 
 <a name="2.0.2"></a>
 ## [2.0.2](https://github.com/thetric/ilias-downloader-connector-domparser/compare/2.0.1...v2.0.2) (2017-06-17)
