@@ -11,12 +11,12 @@ repositories {
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-version '2.0.2'
+version '3.0.0'
 
 dependencies {
     compile 'org.codehaus.groovy:groovy:2.4.11'
 
-    compile 'com.github.thetric:ilias-downloader-connector-api:2.0.2'
+    compile 'com.github.thetric:ilias-downloader-connector-api:3.0.1'
 
     // web parser deps
     compile 'org.jsoup:jsoup:1.10.2'
