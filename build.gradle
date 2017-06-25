@@ -15,7 +15,7 @@ targetCompatibility = 1.8
 version '3.0.0'
 
 dependencies {
-    compile 'org.codehaus.groovy:groovy:2.4.11'
+    compile 'org.codehaus.groovy:groovy:2.4.12'
 
     compile 'com.github.thetric:ilias-downloader-connector-api:3.0.1'
 
