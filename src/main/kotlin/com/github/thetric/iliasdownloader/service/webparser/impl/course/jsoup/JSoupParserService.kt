@@ -6,5 +6,5 @@ import org.jsoup.nodes.Document
  * Abstraction for Jsoup's HTML parsing.
  */
 interface JSoupParserService {
-    Document parse(String html)
+    fun parse(html: String): Document
 }

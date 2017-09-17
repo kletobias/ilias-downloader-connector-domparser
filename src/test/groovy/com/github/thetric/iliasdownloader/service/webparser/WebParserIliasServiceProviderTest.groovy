@@ -35,7 +35,7 @@ class WebParserIliasServiceProviderTest extends Specification {
     def "constructor: rethrow IOEx from cookieService"() {
         setup:
         final Exception originalEx = new IOException('')
-        cookieService.getCookieFromUrl(_, _) >> { throw originalEx }
+        cookieService.getCookieFromUrl(_ as String, _ as String) >> { throw originalEx }
 
         when:
         new WebParserIliasServiceProvider(cookieService, 'https://www.ilias.fh-dortmund.de/ilias/login.php')
@@ -47,7 +47,7 @@ class WebParserIliasServiceProviderTest extends Specification {
 
     def "constructor: throw NoCookiesAvailableException if cookie cannot be found"() {
         setup:
-        cookieService.getCookieFromUrl(_, _) >> null
+        cookieService.getCookieFromUrl(_ as String, _ as String) >> null
 
         when:
         new WebParserIliasServiceProvider(cookieService, 'https://www.ilias.fh-dortmund.de/ilias/login.php')
@@ -60,7 +60,7 @@ class WebParserIliasServiceProviderTest extends Specification {
         setup:
         final def clientId = 'client-id'
         final def loginUrl = 'https://www.ilias.fh-dortmund.de/ilias/login.php'
-        cookieService.getCookieFromUrl(loginUrl, _) >> clientId
+        cookieService.getCookieFromUrl(loginUrl, _ as String) >> clientId
 
         when:
         final def sut = new WebParserIliasServiceProvider(cookieService, loginUrl)
@@ -73,7 +73,7 @@ class WebParserIliasServiceProviderTest extends Specification {
         setup:
         final def clientId = 'client-id'
         final def loginUrl = 'www.ilias.fh-dortmund.de/ilias/login.php'
-        cookieService.getCookieFromUrl(loginUrl, _) >> clientId
+        cookieService.getCookieFromUrl(loginUrl, _ as String) >> clientId
 
         when:
         final def sut = new WebParserIliasServiceProvider(cookieService, loginUrl)
@@ -87,7 +87,7 @@ class WebParserIliasServiceProviderTest extends Specification {
     def "constructor: does not prepend 'https://' if loginUrl starts with '#prefix'"() {
         setup:
         final def clientId = 'client-id'
-        cookieService.getCookieFromUrl(loginUrl, _) >> clientId
+        cookieService.getCookieFromUrl(loginUrl, _ as String) >> clientId
 
         when:
         final def sut = new WebParserIliasServiceProvider(cookieService, loginUrl)

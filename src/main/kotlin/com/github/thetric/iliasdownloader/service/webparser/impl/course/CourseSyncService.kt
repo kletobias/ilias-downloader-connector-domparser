@@ -8,7 +8,7 @@ import com.github.thetric.iliasdownloader.service.model.IliasItem
  * Provides methods for access to Ilias courses.
  */
 interface CourseSyncService {
-    Collection<Course> getJoinedCourses()
+    val joinedCourses: Collection<Course>
 
-    IliasItemVisitor.VisitResult visit(final IliasItem courseItem, final IliasItemVisitor itemVisitor)
+    fun visit(courseItem: IliasItem, itemVisitor: IliasItemVisitor): IliasItemVisitor.VisitResult
 }

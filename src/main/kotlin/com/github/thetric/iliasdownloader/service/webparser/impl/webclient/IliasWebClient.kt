@@ -2,15 +2,17 @@ package com.github.thetric.iliasdownloader.service.webparser.impl.webclient
 
 import com.github.thetric.iliasdownloader.service.model.LoginCredentials
 
+import java.io.InputStream
+
 /**
  *
  */
 interface IliasWebClient {
-    InputStream getAsInputStream(final String url)
+    fun getAsInputStream(url: String): InputStream
 
-    void login(final LoginCredentials credentials)
+    fun login(credentials: LoginCredentials)
 
-    void logout()
+    fun logout()
 
-    String getHtml(final String url)
+    fun getHtml(url: String): String
 }

@@ -8,6 +8,8 @@ import com.github.thetric.iliasdownloader.service.webparser.impl.course.CourseSy
 import com.github.thetric.iliasdownloader.service.webparser.impl.webclient.IliasWebClient
 import spock.lang.Specification
 
+import java.time.LocalDateTime
+
 class WebIliasServiceTest extends Specification {
     private final CourseSyncService courseSyncService = Mock()
     private final IliasWebClient iliasWebClient = Mock()
@@ -17,7 +19,8 @@ class WebIliasServiceTest extends Specification {
     def "getContentAsStream: call webClient with correct arg"() {
         setup:
         final url = 'https://ilias.de/file/url/bar.pdf'
-        final CourseFile file = new CourseFile('Dummy file', url, null, null, 42)
+        final Course parent = new Course(42, 'test', 'https://ilias.de/course/47', null)
+        final CourseFile file = new CourseFile('Dummy file', url, parent, LocalDateTime.now(), 42)
 
         when:
         sut.getContentAsStream(file)
@@ -28,7 +31,7 @@ class WebIliasServiceTest extends Specification {
 
     def "login: call webClient with credentials"() {
         setup:
-        final credentials = new LoginCredentials(userName: 'foo', password: 'secret1')
+        final credentials = new LoginCredentials('foo', 'secret1')
 
         when:
         sut.login(credentials)
@@ -56,7 +59,7 @@ class WebIliasServiceTest extends Specification {
 
     def "visit: pass through args"() {
         setup:
-        final Course course = new Course(id: 684, name: 'Web Engineering', url: 'https://fh.de/ilias/we/46', parent: null)
+        final Course course = new Course(684, 'Web Engineering', 'https://fh.de/ilias/we/46', null)
         final IliasItemVisitor visitMeth = Mock()
 
         when:

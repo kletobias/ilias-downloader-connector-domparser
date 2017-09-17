@@ -4,11 +4,10 @@ import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 
 /**
- * P
+ *
  */
-final class JSoupParserServiceImpl implements JSoupParserService {
-    @Override
-    Document parse(final String html) {
+class JSoupParserServiceImpl : JSoupParserService {
+    override fun parse(html: String): Document {
         return Jsoup.parse(html)
     }
 }
