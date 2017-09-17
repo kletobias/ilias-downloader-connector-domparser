@@ -10,6 +10,7 @@ buildscript {
 
 plugins {
     id 'groovy'
+    id "io.gitlab.arturbosch.detekt" version "1.0.0.RC4-3"
     id 'net.saliman.cobertura' version '2.5.0'
 }
 
@@ -54,6 +55,7 @@ dependencies {
 }
 
 apply from: rootProject.file('config/gradle/coverage.gradle')
+apply from: file('gradle/detekt.gradle')
 
 task sourcesJar(type: Jar, dependsOn: classes) {
     classifier = 'sources'
