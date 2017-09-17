@@ -54,7 +54,7 @@ dependencies {
     testRuntime 'org.slf4j:slf4j-api:1.7.25'
 }
 
-apply from: rootProject.file('config/gradle/coverage.gradle')
+apply from: file('gradle/coverage.gradle')
 apply from: file('gradle/detekt.gradle')
 
 task sourcesJar(type: Jar, dependsOn: classes) {
