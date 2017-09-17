@@ -8,7 +8,7 @@ import com.github.thetric.iliasdownloader.service.webparser.impl.course.CourseSy
 import com.github.thetric.iliasdownloader.service.webparser.impl.course.jsoup.JSoupParserServiceImpl
 import com.github.thetric.iliasdownloader.service.webparser.impl.webclient.OkHttpIliasWebClient
 import java.io.IOException
-import java.util.*
+import java.util.Optional
 
 private const val LOGIN_PAGE_NAME = "login.php"
 private const val ILIAS_CLIENT_ID_COOKIE_NAME = "ilClientId"
@@ -58,7 +58,8 @@ constructor(
 
         return Optional.ofNullable(id)
             .orElseThrow {
-                CookieNotFoundException("Konnte das Cookie '$ILIAS_CLIENT_ID_COOKIE_NAME\' nicht in der Response von der Seite $loginPage finden")
+                CookieNotFoundException("Konnte das Cookie '$ILIAS_CLIENT_ID_COOKIE_NAME\' nicht in der Response von der Seite " +
+                    "$loginPage finden")
             }
     }
 

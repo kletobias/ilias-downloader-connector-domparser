@@ -14,7 +14,6 @@ import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import java.util.*
 import java.util.regex.Pattern
 
 private const val COURSE_SELECTOR = "a[href*='_crs_'].il_ContainerItemTitle"
@@ -87,11 +86,6 @@ class CourseSyncServiceImpl(
         return getIliasItemRows(itemContainer, courseItem).filter { it.isBlank().not() }
     }
 
-    /**
-     * Extract HTML from the 'table'
-     *
-     * @param courseItem
-     */
     private fun getIliasItemRows(tableHtml: String, courseItem: IliasItem): Collection<String> {
         val itemListStartDelimiter = "<hr>"
         val startIndexItemList = tableHtml.indexOf(itemListStartDelimiter)
@@ -116,7 +110,7 @@ class CourseSyncServiceImpl(
     }
 
     private fun getItemContainersFromUrl(itemUrl: String): String {
-        val html = this.getHtml(itemUrl)
+        val html = getHtml(itemUrl)
         val startTag = "<pre>"
         val startIndexTable = html.indexOf(startTag)
         val endTag = "</pre>"
@@ -154,7 +148,7 @@ class CourseSyncServiceImpl(
     }
 
     private fun resolveItemLink(parent: IliasItem, relUrl: String): String {
-        return parent.url + "/" + relUrl
+        return "${parent.url}/$relUrl"
     }
 
     private fun createFile(parent: IliasItem, itemRow: String): CourseFile {

@@ -3,9 +3,12 @@ package com.github.thetric.iliasdownloader.service.webparser.impl.webclient
 import com.github.thetric.iliasdownloader.service.exception.IliasAuthenticationException
 import com.github.thetric.iliasdownloader.service.exception.IliasException
 import com.github.thetric.iliasdownloader.service.model.LoginCredentials
-import okhttp3.*
+import okhttp3.FormBody
+import okhttp3.JavaNetCookieJar
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.Response
 import org.apache.logging.log4j.LogManager
-
 import java.io.InputStream
 import java.net.CookieManager
 import java.net.CookiePolicy
