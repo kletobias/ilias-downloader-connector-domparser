@@ -12,6 +12,7 @@ import com.github.thetric.iliasdownloader.service.webparser.impl.webclient.Ilias
 import org.apache.logging.log4j.LogManager
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
+import java.lang.Long.parseLong
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.regex.Pattern
@@ -62,7 +63,7 @@ class CourseSyncServiceImpl(
         return Course(id = courseId, url = courseUrl, name = courseName)
     }
 
-    private fun getCourseId(aTag: Element): Int {
+    private fun getCourseId(aTag: Element): Long {
         val href = aTag.attr("href")
         // href="http://www.ilias.fh-dortmund.de/ilias/goto_ilias-fhdo_crs_\d+.html"
         val idString = href.replaceFirst(courseLinkPrefix.toRegex(), "").replace(".html", "")
@@ -186,9 +187,9 @@ class CourseSyncServiceImpl(
         return LocalDateTime.parse(lastModifiedString, LAST_MODIFIED_FORMATTER)
     }
 
-    private fun parseId(href: String, probableIdString: String): Int {
+    private fun parseId(href: String, probableIdString: String): Long {
         try {
-            return Integer.parseInt(probableIdString)
+            return parseLong(probableIdString)
         } catch (e: NumberFormatException) {
             throw IliasItemIdStringParsingException("Failed to parse \'$probableIdString\', original string was \'$href\'", e)
         }
