@@ -35,7 +35,7 @@ version '4.0.0'
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
 
-    compile 'com.github.thetric:ilias-downloader-connector-api:4.0.2'
+    compile 'com.github.thetric:ilias-downloader-connector-api:4.0.3'
 
     // web parser deps
     compile 'org.jsoup:jsoup:1.10.3'
