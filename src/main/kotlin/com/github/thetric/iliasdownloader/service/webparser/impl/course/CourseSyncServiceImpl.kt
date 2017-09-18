@@ -31,7 +31,7 @@ class CourseSyncServiceImpl(
     iliasBaseUrl: String,
     clientId: String
 ) : CourseSyncService {
-    private val courseOverview: String = iliasBaseUrl + "ilias.php?baseClass=ilPersonalDesktopGUI&cmd=jumpToSelectedItems"
+    private val courseOverview: String = "${iliasBaseUrl}ilias.php?baseClass=ilPersonalDesktopGUI&cmd=jumpToSelectedItems"
     private val courseLinkPrefix: String = "${iliasBaseUrl}goto_${clientId}_crs_"
     private val courseWebDavPrefix: String = "${iliasBaseUrl}webdav.php/ilias-fhdo/ref_"
     private val log = LogManager.getLogger(CourseSyncServiceImpl::class.java)
@@ -59,7 +59,7 @@ class CourseSyncServiceImpl(
     private fun toCourse(courseElement: Element): Course {
         val courseId = getCourseId(courseElement)
         val courseName = courseElement.text()
-        val courseUrl = courseWebDavPrefix + courseId.toString() + "/"
+        val courseUrl = "$courseWebDavPrefix$courseId/"
         return Course(id = courseId, url = courseUrl, name = courseName)
     }
 
@@ -106,7 +106,7 @@ class CourseSyncServiceImpl(
 
     private fun checkItemListIndex(index: Int, name: String, item: IliasItem) {
         if (index == -1) {
-            throw IllegalArgumentException(name + " of item list not found! Search URL is " + item.url)
+            throw IllegalArgumentException("$name of item list not found! Search URL is ${item.url}")
         }
     }
 
@@ -176,7 +176,7 @@ class CourseSyncServiceImpl(
         val startIndex = secondPosSeparator + ROW_SEPARATOR.length
         val matcher = COURSE_LINK_REGEX.matcher(itemRow.subSequence(startIndex, -1))
         if (!matcher.matches()) {
-            throw IllegalStateException("Failed to parse " + itemRow)
+            throw IllegalStateException("Failed to parse $itemRow")
         }
         return ParsedIliasTableRow(matcher.group("name"), matcher.group("url"))
     }
