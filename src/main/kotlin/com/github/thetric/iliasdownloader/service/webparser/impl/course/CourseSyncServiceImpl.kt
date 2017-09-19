@@ -174,7 +174,7 @@ class CourseSyncServiceImpl(
 
     private fun parseLink(itemRow: String, secondPosSeparator: Int): ParsedIliasTableRow {
         val startIndex = secondPosSeparator + ROW_SEPARATOR.length
-        val matcher = COURSE_LINK_REGEX.matcher(itemRow.subSequence(startIndex, -1))
+        val matcher = COURSE_LINK_REGEX.matcher(itemRow.subSequence(startIndex, itemRow.length))
         if (!matcher.matches()) {
             throw IllegalStateException("Failed to parse $itemRow")
         }
