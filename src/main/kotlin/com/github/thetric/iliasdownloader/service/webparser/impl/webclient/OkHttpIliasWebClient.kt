@@ -3,12 +3,12 @@ package com.github.thetric.iliasdownloader.service.webparser.impl.webclient
 import com.github.thetric.iliasdownloader.service.exception.IliasAuthenticationException
 import com.github.thetric.iliasdownloader.service.exception.IliasException
 import com.github.thetric.iliasdownloader.service.model.LoginCredentials
+import mu.KotlinLogging
 import okhttp3.FormBody
 import okhttp3.JavaNetCookieJar
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
-import org.apache.logging.log4j.LogManager
 import java.io.InputStream
 import java.net.CookieManager
 import java.net.CookiePolicy
@@ -23,7 +23,7 @@ class OkHttpIliasWebClient(
     private val cookieManager: CookieManager = CookieManager()
     private val loginPage: String = "${iliasBaseUrl}login.php"
     private val logoutPage: String = "${iliasBaseUrl}logout.php"
-    private val log = LogManager.getLogger(OkHttpIliasWebClient::class.java)
+    private val log = KotlinLogging.logger {}
 
     init {
         cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL)
@@ -34,7 +34,7 @@ class OkHttpIliasWebClient(
     }
 
     override fun login(credentials: LoginCredentials) {
-        log.info("Logging in at {}", loginPage)
+        log.info { "Logging in at $loginPage" }
         val loginForm = FormBody.Builder()
             .add("username", credentials.userName)
             .add("password", credentials.password)
@@ -52,15 +52,15 @@ class OkHttpIliasWebClient(
             clearCookies()
             throw IliasAuthenticationException("Login at $loginPage failed. Invalid credentials")
         }
-        log.info("Login at {} succeeded", loginPage)
+        log.info { "Login at $loginPage succeeded " }
     }
 
     override fun logout() {
-        log.info("Logging out: {}", logoutPage)
+        log.info { "Logging out: $logoutPage" }
         val response = executeGetRequest(logoutPage)
         clearCookies()
         checkResponse(logoutPage, response)
-        log.info("Logout at {} succeeded", logoutPage)
+        log.info { "Logout at ${logoutPage}succeeded" }
     }
 
     private fun clearCookies() {

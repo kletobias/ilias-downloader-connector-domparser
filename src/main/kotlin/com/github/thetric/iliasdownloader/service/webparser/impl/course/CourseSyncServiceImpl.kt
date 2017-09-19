@@ -9,7 +9,7 @@ import com.github.thetric.iliasdownloader.service.model.IliasItem
 import com.github.thetric.iliasdownloader.service.webparser.impl.IliasItemIdStringParsingException
 import com.github.thetric.iliasdownloader.service.webparser.impl.course.jsoup.JSoupParserService
 import com.github.thetric.iliasdownloader.service.webparser.impl.webclient.IliasWebClient
-import org.apache.logging.log4j.LogManager
+import mu.KotlinLogging
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 import java.lang.Long.parseLong
@@ -34,11 +34,11 @@ class CourseSyncServiceImpl(
     private val courseOverview: String = "${iliasBaseUrl}ilias.php?baseClass=ilPersonalDesktopGUI&cmd=jumpToSelectedItems"
     private val courseLinkPrefix: String = "${iliasBaseUrl}goto_${clientId}_crs_"
     private val courseWebDavPrefix: String = "${iliasBaseUrl}webdav.php/ilias-fhdo/ref_"
-    private val log = LogManager.getLogger(CourseSyncServiceImpl::class.java)
+    private val log = KotlinLogging.logger {}
 
     override val joinedCourses: Collection<Course>
         get() {
-            log.info("Get all courses and groups from {}", courseOverview)
+            log.info { "Get all courses and groups from $courseOverview" }
             val document = connectAndGetDocument(courseOverview)
             return getCoursesFromHtml(document)
         }
