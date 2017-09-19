@@ -1,3 +1,9 @@
+<a name="4.0.5"></a>
+## [4.0.5](https://github.com/thetric/ilias-downloader-connector-domparser/compare/4.0.3...4.0.5) (2017-09-19)
+
+Use correct scope of slf4j-api
+
+
 <a name="4.0.4"></a>
 ## [4.0.4](https://github.com/thetric/ilias-downloader-connector-domparser/compare/4.0.3...4.0.4) (2017-09-19)
 
