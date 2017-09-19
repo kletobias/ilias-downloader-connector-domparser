@@ -1,3 +1,13 @@
+<a name="4.0.2"></a>
+## [4.0.2](https://github.com/thetric/ilias-downloader-connector-domparser/compare/4.0.0...4.0.2) (2017-09-19)
+
+
+### Bug Fixes
+
+* correctly split the item row entry ([33b24f4](https://github.com/thetric/ilias-downloader-connector-domparser/commit/33b24f4))
+
+
+
 <a name="4.0.1"></a>
 ## [4.0.1](https://github.com/thetric/ilias-downloader-connector-domparser/compare/4.0.0...4.0.1) (2017-09-18)
 
