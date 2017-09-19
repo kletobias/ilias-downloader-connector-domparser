@@ -1,3 +1,8 @@
+<a name="4.0.4"></a>
+## [4.0.4](https://github.com/thetric/ilias-downloader-connector-domparser/compare/4.0.3...4.0.4) (2017-09-19)
+
+Migrated from log4j2 to SLF4J+logback.
+
 <a name="4.0.3"></a>
 ## [4.0.3](https://github.com/thetric/ilias-downloader-connector-domparser/compare/4.0.2...4.0.3) (2017-09-19)
 
