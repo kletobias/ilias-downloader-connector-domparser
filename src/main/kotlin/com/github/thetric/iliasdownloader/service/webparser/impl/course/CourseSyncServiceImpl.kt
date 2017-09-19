@@ -183,7 +183,7 @@ class CourseSyncServiceImpl(
 
     private fun parseLastModified(itemRow: String, firstPosSeparator: Int, secondPosSep: Int): LocalDateTime {
         val startIndex = firstPosSeparator + ROW_SEPARATOR.length
-        val lastModifiedString = itemRow.substring(startIndex, secondPosSep - 1)
+        val lastModifiedString = itemRow.substring(startIndex, secondPosSep)
         return LocalDateTime.parse(lastModifiedString, LAST_MODIFIED_FORMATTER)
     }
 
