@@ -30,7 +30,7 @@ compileKotlin {
     }
 }
 
-version '4.0.1'
+version '4.0.2'
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
