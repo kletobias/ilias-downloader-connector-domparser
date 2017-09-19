@@ -1,3 +1,13 @@
+<a name="4.0.3"></a>
+## [4.0.3](https://github.com/thetric/ilias-downloader-connector-domparser/compare/4.0.2...4.0.3) (2017-09-19)
+
+
+### Bug Fixes
+
+* correctly split the last modified date from the plain text ([411af4a](https://github.com/thetric/ilias-downloader-connector-domparser/commit/411af4a))
+
+
+
 <a name="4.0.2"></a>
 ## [4.0.2](https://github.com/thetric/ilias-downloader-connector-domparser/compare/4.0.0...4.0.2) (2017-09-19)
 
