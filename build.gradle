@@ -44,7 +44,7 @@ dependencies {
 
     // logging libs
     compile 'io.github.microutils:kotlin-logging:1.4.6'
-    testRuntime 'org.slf4j:slf4j-api:1.7.25'
+    compile 'org.slf4j:slf4j-api:1.7.25'
 
     // test
     testCompile 'org.codehaus.groovy:groovy:2.4.12'
