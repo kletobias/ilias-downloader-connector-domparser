@@ -1,5 +1,15 @@
+<a name="4.0.6"></a>
+## [4.0.6](https://github.com/thetric/ilias-downloader-connector-domparser/compare/4.0.5...4.0.6) (2017-09-28)
+
+
+### Bug Fixes
+
+* close login response ([8502bde](https://github.com/thetric/ilias-downloader-connector-domparser/commit/8502bde))
+
+
+
 <a name="4.0.5"></a>
-## [4.0.5](https://github.com/thetric/ilias-downloader-connector-domparser/compare/4.0.3...4.0.5) (2017-09-19)
+## [4.0.5](https://github.com/thetric/ilias-downloader-connector-domparser/compare/4.0.4...4.0.5) (2017-09-19)
 
 Use correct scope of slf4j-api
 
