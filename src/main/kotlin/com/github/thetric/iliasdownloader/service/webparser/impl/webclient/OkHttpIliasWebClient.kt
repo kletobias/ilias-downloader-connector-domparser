@@ -46,13 +46,14 @@ class OkHttpIliasWebClient(
         val loginClient = client.newBuilder()
             .followRedirects(true)
             .build()
-        val response = loginClient.newCall(request).execute()
-        checkResponse(loginPage, response)
-        if (response.request().url().toString().startsWith(loginPage)) {
-            clearCookies()
-            throw IliasAuthenticationException("Login at $loginPage failed. Invalid credentials")
+        loginClient.newCall(request).execute().use {
+            checkResponse(loginPage, it)
+            if (it.request().url().toString().startsWith(loginPage)) {
+                clearCookies()
+                throw IliasAuthenticationException("Login at $loginPage failed. Invalid credentials")
+            }
+            log.info { "Login at $loginPage succeeded " }
         }
-        log.info { "Login at $loginPage succeeded " }
     }
 
     override fun logout() {
