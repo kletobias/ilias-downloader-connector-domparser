@@ -10,7 +10,7 @@ buildscript {
 
 plugins {
     id 'groovy'
-    id "io.gitlab.arturbosch.detekt" version "1.0.0.RC4-3"
+    id "io.gitlab.arturbosch.detekt" version "1.0.0.RC5-3"
     id 'net.saliman.cobertura' version '2.5.0'
 }
 
