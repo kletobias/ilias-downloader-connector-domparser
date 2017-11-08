@@ -51,7 +51,7 @@ dependencies {
     testCompile('org.spockframework:spock-core:1.1-groovy-2.4') {
         exclude group: 'org.codehaus.groovy', module: 'groovy-all'
     }
-    testCompile 'net.bytebuddy:byte-buddy:1.7.5'
+    testCompile 'net.bytebuddy:byte-buddy:1.7.9'
 }
 
 apply from: file('gradle/coverage.gradle')
