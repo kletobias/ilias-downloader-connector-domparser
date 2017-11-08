@@ -5,6 +5,8 @@ import com.github.thetric.iliasdownloader.service.IliasServiceProvider
 import com.github.thetric.iliasdownloader.service.webparser.impl.CookieNotFoundException
 import com.github.thetric.iliasdownloader.service.webparser.impl.WebIliasService
 import com.github.thetric.iliasdownloader.service.webparser.impl.course.CourseSyncServiceImpl
+import com.github.thetric.iliasdownloader.service.webparser.impl.course.IliasItemParser
+import com.github.thetric.iliasdownloader.service.webparser.impl.course.IliasItemParserImpl
 import com.github.thetric.iliasdownloader.service.webparser.impl.course.jsoup.JSoupParserServiceImpl
 import com.github.thetric.iliasdownloader.service.webparser.impl.webclient.OkHttpIliasWebClient
 import java.io.IOException
@@ -66,11 +68,14 @@ constructor(
     override fun newInstance(): IliasService {
         val jSoupParserService = JSoupParserServiceImpl()
         val iliasWebClient = OkHttpIliasWebClient(iliasBaseUrl)
+        val courseOverview = "${iliasBaseUrl}ilias.php?baseClass=ilPersonalDesktopGUI&cmd=jumpToSelectedItems"
+        val courseLinkPrefix = "${iliasBaseUrl}goto_${clientId}_crs_"
+        val courseWebDavPrefix = "${iliasBaseUrl}webdav.php/ilias-fhdo/ref_"
+        val itemParser: IliasItemParser = IliasItemParserImpl(courseWebDavPrefix, courseLinkPrefix)
         val courseSyncServiceProvider = CourseSyncServiceImpl(
             jSoupParserService,
             iliasWebClient,
-            iliasBaseUrl,
-            clientId)
+            itemParser, courseOverview)
         return WebIliasService(courseSyncServiceProvider, iliasWebClient)
     }
 }
