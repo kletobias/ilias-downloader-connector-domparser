@@ -1,3 +1,8 @@
+<a name="4.0.7"></a>
+## [4.0.7](https://github.com/thetric/ilias-downloader-connector-domparser/compare/4.0.6...4.0.7) (2017-11-08)
+
+Housekeeping (dependency updates, refactoring)
+
 <a name="4.0.6"></a>
 ## [4.0.6](https://github.com/thetric/ilias-downloader-connector-domparser/compare/4.0.5...4.0.6) (2017-09-28)
 
