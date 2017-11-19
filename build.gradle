@@ -12,6 +12,7 @@ plugins {
     id 'groovy'
     id "io.gitlab.arturbosch.detekt" version "1.0.0.RC5-4"
     id 'net.saliman.cobertura' version '2.5.0'
+    id 'java-library'
 }
 
 apply plugin: 'kotlin'
@@ -33,25 +34,25 @@ compileKotlin {
 version '4.0.5'
 
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+    api "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
 
-    compile 'com.github.thetric:ilias-downloader-connector-api:4.0.3'
+    api 'com.github.thetric:ilias-downloader-connector-api:4.0.4'
 
     // web parser deps
-    compile 'org.jsoup:jsoup:1.11.1'
-    compile 'com.squareup.okhttp3:okhttp:3.9.0'
-    compile 'com.squareup.okhttp3:okhttp-urlconnection:3.9.0'
+    implementation 'org.jsoup:jsoup:1.11.1'
+    implementation 'com.squareup.okhttp3:okhttp:3.9.0'
+    implementation 'com.squareup.okhttp3:okhttp-urlconnection:3.9.0'
 
     // logging libs
-    compile 'io.github.microutils:kotlin-logging:1.4.6'
-    compile 'org.slf4j:slf4j-api:1.7.25'
+    implementation 'io.github.microutils:kotlin-logging:1.4.6'
+    runtimeOnly 'org.slf4j:slf4j-api:1.7.25'
 
     // test
-    testCompile 'org.codehaus.groovy:groovy:2.4.12'
-    testCompile('org.spockframework:spock-core:1.1-groovy-2.4') {
+    testImplementation 'org.codehaus.groovy:groovy:2.4.12'
+    testImplementation('org.spockframework:spock-core:1.1-groovy-2.4') {
         exclude group: 'org.codehaus.groovy', module: 'groovy-all'
     }
-    testCompile 'net.bytebuddy:byte-buddy:1.7.9'
+    testRuntimeOnly 'net.bytebuddy:byte-buddy:1.7.9'
 }
 
 apply from: file('gradle/coverage.gradle')
