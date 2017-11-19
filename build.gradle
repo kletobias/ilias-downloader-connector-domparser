@@ -40,8 +40,8 @@ dependencies {
 
     // web parser deps
     implementation 'org.jsoup:jsoup:1.11.1'
-    implementation 'com.squareup.okhttp3:okhttp:3.9.0'
-    implementation 'com.squareup.okhttp3:okhttp-urlconnection:3.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.9.1'
+    implementation 'com.squareup.okhttp3:okhttp-urlconnection:3.9.1'
 
     // logging libs
     implementation 'io.github.microutils:kotlin-logging:1.4.6'
