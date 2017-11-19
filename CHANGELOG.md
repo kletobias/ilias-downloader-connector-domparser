@@ -1,3 +1,8 @@
+<a name="4.0.8"></a>
+## [4.0.8](https://github.com/thetric/ilias-downloader-connector-domparser/compare/4.0.7...4.0.8) (2017-11-19)
+
+Maintenance release (updated deps, cleaned up Maven POM)
+
 <a name="4.0.7"></a>
 ## [4.0.7](https://github.com/thetric/ilias-downloader-connector-domparser/compare/4.0.6...4.0.7) (2017-11-08)
 
