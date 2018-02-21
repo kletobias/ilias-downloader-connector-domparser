@@ -39,7 +39,7 @@ dependencies {
     api 'com.github.thetric:ilias-downloader-connector-api:4.0.4'
 
     // web parser deps
-    implementation 'org.jsoup:jsoup:1.11.1'
+    implementation 'org.jsoup:jsoup:1.11.2'
     implementation 'com.squareup.okhttp3:okhttp:3.9.1'
     implementation 'com.squareup.okhttp3:okhttp-urlconnection:3.9.1'
 
