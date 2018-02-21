@@ -19,7 +19,7 @@ class WebIliasServiceTest extends Specification {
     def "getContentAsStream: call webClient with correct arg"() {
         setup:
         final url = 'https://ilias.de/file/url/bar.pdf'
-        final Course parent = new Course(42, 'test', 'https://ilias.de/course/47', null)
+        final Course parent = new Course(42, 'test', 'https://ilias.de/course/47')
         final CourseFile file = new CourseFile('Dummy file', url, parent, LocalDateTime.now(), 42)
 
         when:
@@ -59,7 +59,7 @@ class WebIliasServiceTest extends Specification {
 
     def "visit: pass through args"() {
         setup:
-        final Course course = new Course(684, 'Web Engineering', 'https://fh.de/ilias/we/46', null)
+        final Course course = new Course(684, 'Web Engineering', 'https://fh.de/ilias/we/46')
         final IliasItemVisitor visitMeth = Mock()
 
         when:
