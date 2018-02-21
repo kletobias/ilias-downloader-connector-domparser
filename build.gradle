@@ -48,11 +48,11 @@ dependencies {
     runtimeOnly 'org.slf4j:slf4j-api:1.7.25'
 
     // test
-    testImplementation 'org.codehaus.groovy:groovy:2.4.12'
+    testImplementation 'org.codehaus.groovy:groovy:2.4.13'
     testImplementation('org.spockframework:spock-core:1.1-groovy-2.4') {
         exclude group: 'org.codehaus.groovy', module: 'groovy-all'
     }
-    testRuntimeOnly 'net.bytebuddy:byte-buddy:1.7.9'
+    testRuntimeOnly 'net.bytebuddy:byte-buddy:1.7.10'
 }
 
 apply from: file('gradle/coverage.gradle')
