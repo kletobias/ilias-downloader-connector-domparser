@@ -90,7 +90,8 @@ class IliasItemParserImpl(
         try {
             return probableIdString.toLong()
         } catch (e: NumberFormatException) {
-            throw IliasItemIdStringParsingException("Failed to parse \'$probableIdString\', original string was \'$href\'", e)
+            val msg = "Failed to parse \'$probableIdString\', original string was \'$href\'"
+            throw IliasItemIdStringParsingException(msg, e)
         }
     }
 }

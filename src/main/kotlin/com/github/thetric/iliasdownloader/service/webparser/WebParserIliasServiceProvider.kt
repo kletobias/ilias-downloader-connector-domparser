@@ -60,8 +60,9 @@ constructor(
 
         return Optional.ofNullable(id)
             .orElseThrow {
-                CookieNotFoundException("Konnte das Cookie '$ILIAS_CLIENT_ID_COOKIE_NAME\' nicht in der Response von der Seite " +
-                    "$loginPage finden")
+                val msg = "Konnte das Cookie '$ILIAS_CLIENT_ID_COOKIE_NAME\' nicht in der Response von der Seite " +
+                    "$loginPage finden"
+                CookieNotFoundException(msg)
             }
     }
 

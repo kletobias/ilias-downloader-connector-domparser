@@ -92,7 +92,8 @@ class CourseSyncServiceImpl(
         }
     }
 
-    private fun walkIliasItemNode(parent: IliasItem, itemRow: String, itemVisitor: IliasItemVisitor): IliasItemVisitor.VisitResult {
+    private fun walkIliasItemNode(parent: IliasItem, itemRow: String, itemVisitor: IliasItemVisitor)
+        : IliasItemVisitor.VisitResult {
         if (itemParser.isFolder(itemRow)) {
             val courseFolder = itemParser.parseFolder(parent, itemRow)
 
