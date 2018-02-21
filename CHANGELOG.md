@@ -1,3 +1,8 @@
+<a name="4.0.9"></a>
+## [4.0.9](https://github.com/thetric/ilias-downloader-connector-domparser/compare/4.0.8...4.0.9) (2018-02-21)
+
+Minor performance improvements due to dependency updates (Kotlin).
+
 <a name="4.0.8"></a>
 ## [4.0.8](https://github.com/thetric/ilias-downloader-connector-domparser/compare/4.0.7...4.0.8) (2017-11-19)
 
