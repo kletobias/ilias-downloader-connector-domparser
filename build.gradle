@@ -44,7 +44,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp-urlconnection:3.9.1'
 
     // logging libs
-    implementation 'io.github.microutils:kotlin-logging:1.4.6'
+    implementation 'io.github.microutils:kotlin-logging:1.5.3'
     runtimeOnly 'org.slf4j:slf4j-api:1.7.25'
 
     // test
