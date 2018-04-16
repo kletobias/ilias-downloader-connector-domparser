@@ -1,3 +1,9 @@
+<a name="4.0.10"></a>
+## [4.0.10](https://github.com/thetric/ilias-downloader-connector-domparser/compare/4.0.9...4.0.10) (2018-04-16)
+
+Correct Kotlin dependency: use `kotlin-stdlib-jdk8` instead of deprecated
+`kotlin-stdlib-jre8`.
+
 <a name="4.0.9"></a>
 ## [4.0.9](https://github.com/thetric/ilias-downloader-connector-domparser/compare/4.0.8...4.0.9) (2018-02-21)
 
