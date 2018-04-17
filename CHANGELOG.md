@@ -1,3 +1,13 @@
+<a name="4.1.1"></a>
+## [4.1.1](https://github.com/thetric/ilias-downloader-connector-domparser/compare/4.0.10...4.1.1) (2018-04-17)
+
+**IMPORTANT UPDATE** for releases from 4.0.8 to 4.1.0! The Maven POMs generated
+by JitPack didn't include the required dependencies, this was fixed now.
+
+### Bug Fixes
+
+* correct gradle dependency scopes ([111c44d](https://github.com/thetric/ilias-downloader-connector-domparser/commit/111c44d))
+
 <a name="4.1.0"></a>
 # [4.1.0](https://github.com/thetric/ilias-downloader-connector-domparser/compare/4.0.10...4.1.0) (2018-04-17)
 
