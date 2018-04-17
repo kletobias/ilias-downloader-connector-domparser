@@ -1,8 +1,8 @@
 package com.github.thetric.iliasdownloader.service.webparser.impl.webclient
 
 import com.github.thetric.iliasdownloader.service.exception.IliasAuthenticationException
-import com.github.thetric.iliasdownloader.service.exception.IliasException
 import com.github.thetric.iliasdownloader.service.model.LoginCredentials
+import com.github.thetric.iliasdownloader.service.webparser.impl.IliasHttpException
 import mu.KotlinLogging
 import okhttp3.FormBody
 import okhttp3.JavaNetCookieJar
@@ -87,7 +87,8 @@ class OkHttpIliasWebClient(
 
     private fun checkResponse(url: String, response: Response) {
         if (!response.isSuccessful) {
-            throw IliasException("Failed to GET $url: ${response.message()}")
+            val msg = "Failed to GET $url: ${response.message()}"
+            throw IliasHttpException(msg, url, response.code())
         }
     }
 }
