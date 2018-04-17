@@ -1,3 +1,13 @@
+<a name="4.1.0"></a>
+# [4.1.0](https://github.com/thetric/ilias-downloader-connector-domparser/compare/4.0.10...4.1.0) (2018-04-17)
+
+
+### Features
+
+* add url and status code to the exception if the response is not successful ([0857c47](https://github.com/thetric/ilias-downloader-connector-domparser/commit/0857c47))
+
+
+
 <a name="4.0.10"></a>
 ## [4.0.10](https://github.com/thetric/ilias-downloader-connector-domparser/compare/4.0.9...4.0.10) (2018-04-16)
 
