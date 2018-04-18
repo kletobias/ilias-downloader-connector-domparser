@@ -40,19 +40,34 @@ class CourseSyncServiceImpl(
     }
 
     private fun getCoursesFromHtml(document: Document): Collection<Course> {
-        return document.select(COURSE_SELECTOR).map { itemParser.parseCourse(it) }
+        return document.select(COURSE_SELECTOR)
+            .map { itemParser.parseCourse(it) }
     }
 
-    override fun visit(courseItem: IliasItem, itemVisitor: IliasItemVisitor): IliasItemVisitor.VisitResult {
+    override fun visit(
+        courseItem: IliasItem,
+        itemVisitor: IliasItemVisitor
+    ): IliasItemVisitor.VisitResult {
         val itemContainer = getItemContainersFromUrl(courseItem.url)
         if (!itemContainer.isEmpty()) {
-            return if (getNonEmptyEntries(itemContainer, courseItem).any {
-                walkIliasItemNode(courseItem, it, itemVisitor) == IliasItemVisitor.VisitResult.TERMINATE
-            }) IliasItemVisitor.VisitResult.TERMINATE
-            else IliasItemVisitor.VisitResult.CONTINUE
+            return getNonEmptyEntries(itemContainer, courseItem)
+                .stream()
+                .map {
+                    walkIliasItemNode(
+                        courseItem,
+                        it,
+                        itemVisitor
+                    )
+                }
+                .filter { it == IliasItemVisitor.VisitResult.TERMINATE }
+                .findFirst()
+                .orElse(IliasItemVisitor.VisitResult.CONTINUE)
         }
 
-        throw CourseItemNotFoundException("No items found at URL ", courseItem.url)
+        throw CourseItemNotFoundException(
+            "No items found at URL ",
+            courseItem.url
+        )
     }
 
     private fun getItemContainersFromUrl(itemUrl: String): String {
@@ -65,11 +80,19 @@ class CourseSyncServiceImpl(
         return html.substring(exclusiveStartIndex, endIndexTable - 1)
     }
 
-    private fun getNonEmptyEntries(itemContainer: String, courseItem: IliasItem): List<String> {
-        return getIliasItemRows(itemContainer, courseItem).filter { it.isBlank().not() }
+    private fun getNonEmptyEntries(
+        itemContainer: String,
+        courseItem: IliasItem
+    ): List<String> {
+        return getIliasItemRows(itemContainer, courseItem).filter {
+            it.isBlank().not()
+        }
     }
 
-    private fun getIliasItemRows(tableHtml: String, courseItem: IliasItem): Collection<String> {
+    private fun getIliasItemRows(
+        tableHtml: String,
+        courseItem: IliasItem
+    ): Collection<String> {
         val itemListStartDelimiter = "<hr>"
         val startIndexItemList = tableHtml.indexOf(itemListStartDelimiter)
         checkItemListIndex(startIndexItemList, "Begin", courseItem)
@@ -78,7 +101,8 @@ class CourseSyncServiceImpl(
         val endIndexItemList = tableHtml.lastIndexOf(itemListEndDelimiter)
         checkItemListIndex(endIndexItemList, "End", courseItem)
 
-        val itemListBeginPos = startIndexItemList + itemListStartDelimiter.length
+        val itemListBeginPos =
+            startIndexItemList + itemListStartDelimiter.length
         return if (itemListBeginPos >= endIndexItemList) {
             ArrayList()
         } else tableHtml.subSequence(itemListBeginPos, endIndexItemList)
@@ -92,8 +116,11 @@ class CourseSyncServiceImpl(
         }
     }
 
-    private fun walkIliasItemNode(parent: IliasItem, itemRow: String, itemVisitor: IliasItemVisitor)
-        : IliasItemVisitor.VisitResult {
+    private fun walkIliasItemNode(
+        parent: IliasItem,
+        itemRow: String,
+        itemVisitor: IliasItemVisitor
+    ): IliasItemVisitor.VisitResult {
         if (itemParser.isFolder(itemRow)) {
             val courseFolder = itemParser.parseFolder(parent, itemRow)
 

@@ -10,5 +10,8 @@ import com.github.thetric.iliasdownloader.service.model.IliasItem
 interface CourseSyncService {
     val joinedCourses: Collection<Course>
 
-    fun visit(courseItem: IliasItem, itemVisitor: IliasItemVisitor): IliasItemVisitor.VisitResult
+    fun visit(
+        courseItem: IliasItem,
+        itemVisitor: IliasItemVisitor
+    ): IliasItemVisitor.VisitResult
 }

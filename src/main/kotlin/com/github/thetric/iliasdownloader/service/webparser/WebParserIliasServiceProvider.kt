@@ -10,7 +10,7 @@ import com.github.thetric.iliasdownloader.service.webparser.impl.course.IliasIte
 import com.github.thetric.iliasdownloader.service.webparser.impl.course.jsoup.JSoupParserServiceImpl
 import com.github.thetric.iliasdownloader.service.webparser.impl.webclient.OkHttpIliasWebClient
 import java.io.IOException
-import java.util.Optional
+import java.util.*
 
 private const val LOGIN_PAGE_NAME = "login.php"
 private const val ILIAS_CLIENT_ID_COOKIE_NAME = "ilClientId"
@@ -53,15 +53,22 @@ constructor(
     private fun retrieveClientId(loginPage: String): String {
         val id: String
         try {
-            id = cookieService.getCookieFromUrl(loginPage, ILIAS_CLIENT_ID_COOKIE_NAME)
+            id = cookieService.getCookieFromUrl(
+                loginPage,
+                ILIAS_CLIENT_ID_COOKIE_NAME
+            )
         } catch (e: IOException) {
-            throw IOException("Konnte die URL \'$loginPage\' nicht erreichen", e)
+            throw IOException(
+                "Konnte die URL \'$loginPage\' nicht erreichen",
+                e
+            )
         }
 
         return Optional.ofNullable(id)
             .orElseThrow {
-                val msg = "Konnte das Cookie '$ILIAS_CLIENT_ID_COOKIE_NAME\' nicht in der Response von der Seite " +
-                    "$loginPage finden"
+                val msg =
+                    "Konnte das Cookie '$ILIAS_CLIENT_ID_COOKIE_NAME\' nicht in der Response von der Seite " +
+                        "$loginPage finden"
                 CookieNotFoundException(msg)
             }
     }
@@ -69,14 +76,17 @@ constructor(
     override fun newInstance(): IliasService {
         val jSoupParserService = JSoupParserServiceImpl()
         val iliasWebClient = OkHttpIliasWebClient(iliasBaseUrl)
-        val courseOverview = "${iliasBaseUrl}ilias.php?baseClass=ilPersonalDesktopGUI&cmd=jumpToSelectedItems"
+        val courseOverview =
+            "${iliasBaseUrl}ilias.php?baseClass=ilPersonalDesktopGUI&cmd=jumpToSelectedItems"
         val courseLinkPrefix = "${iliasBaseUrl}goto_${clientId}_crs_"
         val courseWebDavPrefix = "${iliasBaseUrl}webdav.php/$clientId/ref_"
-        val itemParser: IliasItemParser = IliasItemParserImpl(courseWebDavPrefix, courseLinkPrefix)
+        val itemParser: IliasItemParser =
+            IliasItemParserImpl(courseWebDavPrefix, courseLinkPrefix)
         val courseSyncServiceProvider = CourseSyncServiceImpl(
             jSoupParserService,
             iliasWebClient,
-            itemParser, courseOverview)
+            itemParser, courseOverview
+        )
         return WebIliasService(courseSyncServiceProvider, iliasWebClient)
     }
 }
