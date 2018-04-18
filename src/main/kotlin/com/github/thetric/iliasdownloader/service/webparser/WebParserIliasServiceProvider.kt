@@ -71,7 +71,7 @@ constructor(
         val iliasWebClient = OkHttpIliasWebClient(iliasBaseUrl)
         val courseOverview = "${iliasBaseUrl}ilias.php?baseClass=ilPersonalDesktopGUI&cmd=jumpToSelectedItems"
         val courseLinkPrefix = "${iliasBaseUrl}goto_${clientId}_crs_"
-        val courseWebDavPrefix = "${iliasBaseUrl}webdav.php/ilias-fhdo/ref_"
+        val courseWebDavPrefix = "${iliasBaseUrl}webdav.php/$clientId/ref_"
         val itemParser: IliasItemParser = IliasItemParserImpl(courseWebDavPrefix, courseLinkPrefix)
         val courseSyncServiceProvider = CourseSyncServiceImpl(
             jSoupParserService,
