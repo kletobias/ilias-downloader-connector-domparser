@@ -1,3 +1,18 @@
+<a name="4.2.0"></a>
+# [4.2.0](https://github.com/thetric/ilias-downloader-connector-domparser/compare/4.1.1...4.2.0) (2018-04-18)
+
+
+### Features
+
+* allow dynamic client ids for the webdav url ([9a297ed](https://github.com/thetric/ilias-downloader-connector-domparser/commit/9a297ed)), closes [#2](https://github.com/thetric/ilias-downloader-connector-domparser/issues/2)
+
+
+### Performance Improvements
+
+* **item-parser:** re-use file size separator regex ([c66d21e](https://github.com/thetric/ilias-downloader-connector-domparser/commit/c66d21e))
+
+
+
 <a name="4.1.1"></a>
 ## [4.1.1](https://github.com/thetric/ilias-downloader-connector-domparser/compare/4.0.10...4.1.1) (2018-04-17)
 
