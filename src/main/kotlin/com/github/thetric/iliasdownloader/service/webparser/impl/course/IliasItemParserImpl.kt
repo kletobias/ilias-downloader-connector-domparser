@@ -20,7 +20,7 @@ class IliasItemParserImpl(
         val courseId = getCourseId(courseElement)
         val courseName = courseElement.text()
         val courseUrl = "$courseWebDavPrefix$courseId/"
-        return Course(courseId, courseUrl, courseName)
+        return Course(id = courseId, url = courseUrl, name = courseName)
     }
 
     private fun getCourseId(aTag: Element): Long {
