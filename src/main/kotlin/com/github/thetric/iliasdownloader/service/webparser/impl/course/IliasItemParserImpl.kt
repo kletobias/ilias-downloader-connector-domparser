@@ -80,7 +80,7 @@ private fun resolveItemLink(parent: IliasItem, relUrl: String): String {
 val sizeSeparatorRegex = ",".toRegex()
 
 private fun parseFileSize(itemRow: String, firstPosSeparator: Int): Int {
-    val rawSizeInBytes = itemRow.subSequence(0, firstPosSeparator - 1)
+    val rawSizeInBytes = itemRow.subSequence(0, firstPosSeparator)
     val sanitizedSizeInBytes = rawSizeInBytes.replace(sizeSeparatorRegex, "")
     return sanitizedSizeInBytes.toInt()
 }
