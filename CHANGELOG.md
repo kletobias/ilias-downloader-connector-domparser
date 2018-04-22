@@ -1,3 +1,13 @@
+<a name="4.2.2"></a>
+## [4.2.2](https://github.com/thetric/ilias-downloader-connector-domparser/compare/4.2.1...4.2.2) (2018-04-22)
+
+
+### Bug Fixes
+
+* don't ignore the last digit of the file size ([79a5a19](https://github.com/thetric/ilias-downloader-connector-domparser/commit/79a5a19))
+
+
+
 <a name="4.2.1"></a>
 ## [4.2.1](https://github.com/thetric/ilias-downloader-connector-domparser/compare/4.2.0...4.2.1) (2018-04-22)
 
