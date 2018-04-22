@@ -1,3 +1,13 @@
+<a name="4.2.1"></a>
+## [4.2.1](https://github.com/thetric/ilias-downloader-connector-domparser/compare/4.2.0...4.2.1) (2018-04-22)
+
+
+### Bug Fixes
+
+* correctly assign Course.url and .name ([2fbb9ee](https://github.com/thetric/ilias-downloader-connector-domparser/commit/2fbb9ee))
+
+
+
 <a name="4.2.0"></a>
 # [4.2.0](https://github.com/thetric/ilias-downloader-connector-domparser/compare/4.1.1...4.2.0) (2018-04-18)
 
