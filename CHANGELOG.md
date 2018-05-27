@@ -1,3 +1,13 @@
+<a name="5.0.0-beta.2"></a>
+# [5.0.0-beta.2](https://github.com/thetric/ilias-downloader-connector-domparser/compare/5.0.0-beta.1...5.0.0-beta.2) (2018-05-27)
+
+
+### Bug Fixes
+
+* **sync:** pass context to a course's child items ([8544a55](https://github.com/thetric/ilias-downloader-connector-domparser/commit/8544a55))
+
+
+
 <a name="5.0.0-beta.1"></a>
 # [5.0.0-beta.1](https://github.com/thetric/ilias-downloader-connector-domparser/compare/5.0.0-beta.0...5.0.0-beta.1) (2018-05-27)
 
