@@ -1,0 +1,3 @@
+# default: jdk8, but we need jdk9+
+jdk:
+  - openjdk9
