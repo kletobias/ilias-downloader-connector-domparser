@@ -116,13 +116,13 @@ class CourseSyncServiceImpl(
             val newParentCtx =
                 itemVisitor.handleFolder(parentContext, courseFolder)
             visit(newParentCtx, courseFolder, itemVisitor)
+        } else {
+            // assume it is a file
+            itemVisitor.handleFile(
+                parentContext,
+                itemParser.parseFile(currentUrl, itemRow)
+            )
         }
-
-        // assume it is a file
-        itemVisitor.handleFile(
-            parentContext,
-            itemParser.parseFile(currentUrl, itemRow)
-        )
     }
 
 }
