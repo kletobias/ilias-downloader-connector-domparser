@@ -1,3 +1,13 @@
+<a name="5.0.0-beta.3"></a>
+# [5.0.0-beta.3](https://github.com/thetric/ilias-downloader-connector-domparser/compare/5.0.0-beta.2...5.0.0-beta.3) (2018-05-27)
+
+
+### Bug Fixes
+
+* **sync:** don't attempt to parse a course as a file ([a77cad8](https://github.com/thetric/ilias-downloader-connector-domparser/commit/a77cad8))
+
+
+
 <a name="5.0.0-beta.2"></a>
 # [5.0.0-beta.2](https://github.com/thetric/ilias-downloader-connector-domparser/compare/5.0.0-beta.1...5.0.0-beta.2) (2018-05-27)
 
