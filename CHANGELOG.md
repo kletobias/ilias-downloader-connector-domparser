@@ -1,3 +1,13 @@
+<a name="5.0.0-beta.1"></a>
+# [5.0.0-beta.1](https://github.com/thetric/ilias-downloader-connector-domparser/compare/5.0.0-beta.0...5.0.0-beta.1) (2018-05-27)
+
+
+### Bug Fixes
+
+* use correct jdk for publishing via jitpack ([f75e27b](https://github.com/thetric/ilias-downloader-connector-domparser/commit/f75e27b))
+
+
+
 <a name="5.0.0-beta.0"></a>
 # [5.0.0-beta.0](https://github.com/thetric/ilias-downloader-connector-domparser/compare/4.2.2...5.0.0-beta.0) (2018-05-27)
 
