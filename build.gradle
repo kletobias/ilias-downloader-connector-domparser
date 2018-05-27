@@ -30,12 +30,12 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
     }
 }
 
-version '5.0.0-beta.3'
+version '5.0.0'
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
-    compile 'com.github.thetric:ilias-downloader-connector-api:6.0.0-beta.4'
+    compile 'com.github.thetric:ilias-downloader-connector-api:6.0.0'
 
     // web parser deps
     compile 'org.jsoup:jsoup:1.11.3'

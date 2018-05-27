@@ -1,3 +1,7 @@
+<a name="5.0.0"></a>
+# [5.0.0](https://github.com/thetric/ilias-downloader-connector-domparser/compare/5.0.0-beta.2...5.0.0) (2018-05-27)
+
+
 <a name="5.0.0-beta.3"></a>
 # [5.0.0-beta.3](https://github.com/thetric/ilias-downloader-connector-domparser/compare/5.0.0-beta.2...5.0.0-beta.3) (2018-05-27)
 
