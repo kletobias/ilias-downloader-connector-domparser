@@ -1,3 +1,18 @@
+<a name="5.0.0-beta.0"></a>
+# [5.0.0-beta.0](https://github.com/thetric/ilias-downloader-connector-domparser/compare/4.2.2...5.0.0-beta.0) (2018-05-27)
+
+
+### Code Refactoring
+
+* upgrade to connector-api 6 ([7e2d038](https://github.com/thetric/ilias-downloader-connector-domparser/commit/7e2d038))
+
+
+### BREAKING CHANGES
+
+* upgraded to connector-api 6
+
+
+
 <a name="4.2.2"></a>
 ## [4.2.2](https://github.com/thetric/ilias-downloader-connector-domparser/compare/4.2.1...4.2.2) (2018-04-22)
 
