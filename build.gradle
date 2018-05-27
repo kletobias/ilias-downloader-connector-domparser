@@ -21,8 +21,8 @@ repositories {
     maven { url 'https://jitpack.io' }
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 10
+targetCompatibility = 10
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
     kotlinOptions {
@@ -35,7 +35,7 @@ version '4.2.2'
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
-    compile 'com.github.thetric:ilias-downloader-connector-api:5.0.0'
+    compile 'com.github.thetric:ilias-downloader-connector-api:6.0.0-beta.3'
 
     // web parser deps
     compile 'org.jsoup:jsoup:1.11.3'

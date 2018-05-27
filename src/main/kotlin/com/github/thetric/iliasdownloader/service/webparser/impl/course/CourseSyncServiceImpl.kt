@@ -1,7 +1,6 @@
 package com.github.thetric.iliasdownloader.service.webparser.impl.course
 
-import com.github.thetric.iliasdownloader.service.IliasItemVisitor
-import com.github.thetric.iliasdownloader.service.exception.CourseItemNotFoundException
+import com.github.thetric.iliasdownloader.service.ContextAwareIliasItemVisitor
 import com.github.thetric.iliasdownloader.service.model.Course
 import com.github.thetric.iliasdownloader.service.model.IliasItem
 import com.github.thetric.iliasdownloader.service.webparser.impl.course.jsoup.JSoupParserService
@@ -44,30 +43,20 @@ class CourseSyncServiceImpl(
             .map { itemParser.parseCourse(it) }
     }
 
-    override fun visit(
+    override fun <C> visit(
+        parentContext: C,
         courseItem: IliasItem,
-        itemVisitor: IliasItemVisitor
-    ): IliasItemVisitor.VisitResult {
+        itemVisitor: ContextAwareIliasItemVisitor<C>
+    ) {
         val itemContainer = getItemContainersFromUrl(courseItem.url)
-        if (!itemContainer.isEmpty()) {
-            return getNonEmptyEntries(itemContainer, courseItem)
-                .stream()
-                .map {
-                    walkIliasItemNode(
-                        courseItem,
-                        it,
-                        itemVisitor
-                    )
-                }
-                .filter { it == IliasItemVisitor.VisitResult.TERMINATE }
-                .findFirst()
-                .orElse(IliasItemVisitor.VisitResult.CONTINUE)
+        for (entry in getNonEmptyEntries(itemContainer, courseItem)) {
+            walkIliasItemNode(
+                parentContext,
+                courseItem.url,
+                entry,
+                itemVisitor
+            )
         }
-
-        throw CourseItemNotFoundException(
-            "No items found at URL ",
-            courseItem.url
-        )
     }
 
     private fun getItemContainersFromUrl(itemUrl: String): String {
@@ -85,7 +74,7 @@ class CourseSyncServiceImpl(
         courseItem: IliasItem
     ): List<String> {
         return getIliasItemRows(itemContainer, courseItem).filter {
-            it.isBlank().not()
+            !it.isBlank()
         }
     }
 
@@ -104,7 +93,7 @@ class CourseSyncServiceImpl(
         val itemListBeginPos =
             startIndexItemList + itemListStartDelimiter.length
         return if (itemListBeginPos >= endIndexItemList) {
-            ArrayList()
+            listOf()
         } else tableHtml.subSequence(itemListBeginPos, endIndexItemList)
             .split("\n")
             .map { it.trim() }
@@ -116,22 +105,23 @@ class CourseSyncServiceImpl(
         }
     }
 
-    private fun walkIliasItemNode(
-        parent: IliasItem,
+    private fun <C> walkIliasItemNode(
+        parentContext: C,
+        currentUrl: String,
         itemRow: String,
-        itemVisitor: IliasItemVisitor
-    ): IliasItemVisitor.VisitResult {
+        itemVisitor: ContextAwareIliasItemVisitor<C>
+    ) {
         if (itemParser.isFolder(itemRow)) {
-            val courseFolder = itemParser.parseFolder(parent, itemRow)
-
-            val folderVisitResult = itemVisitor.handleFolder(courseFolder)
-            return if (folderVisitResult == IliasItemVisitor.VisitResult.TERMINATE) {
-                IliasItemVisitor.VisitResult.TERMINATE
-            } else visit(courseFolder, itemVisitor)
+            val courseFolder = itemParser.parseFolder(currentUrl, itemRow)
+            itemVisitor.handleFolder(parentContext, courseFolder)
+            visit(parentContext, courseFolder, itemVisitor)
         }
 
         // assume it is a file
-        return itemVisitor.handleFile(itemParser.parseFile(parent, itemRow))
+        itemVisitor.handleFile(
+            parentContext,
+            itemParser.parseFile(currentUrl, itemRow)
+        )
     }
 
 }

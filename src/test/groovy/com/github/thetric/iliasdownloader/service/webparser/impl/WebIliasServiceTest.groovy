@@ -1,6 +1,6 @@
 package com.github.thetric.iliasdownloader.service.webparser.impl
 
-import com.github.thetric.iliasdownloader.service.IliasItemVisitor
+import com.github.thetric.iliasdownloader.service.ContextAwareIliasItemVisitor
 import com.github.thetric.iliasdownloader.service.model.Course
 import com.github.thetric.iliasdownloader.service.model.CourseFile
 import com.github.thetric.iliasdownloader.service.model.LoginCredentials
@@ -19,8 +19,7 @@ class WebIliasServiceTest extends Specification {
     def "getContentAsStream: call webClient with correct arg"() {
         setup:
         final url = 'https://ilias.de/file/url/bar.pdf'
-        final Course parent = new Course(42, 'test', 'https://ilias.de/course/47')
-        final CourseFile file = new CourseFile('Dummy file', url, parent, LocalDateTime.now(), 42)
+        final CourseFile file = new CourseFile('Dummy file', url, LocalDateTime.now(), 42)
 
         when:
         sut.getContentAsStream(file)
@@ -60,12 +59,13 @@ class WebIliasServiceTest extends Specification {
     def "visit: pass through args"() {
         setup:
         final Course course = new Course(684, 'Web Engineering', 'https://fh.de/ilias/we/46')
-        final IliasItemVisitor visitMeth = Mock()
+        final ContextAwareIliasItemVisitor<Object> visitMeth = Mock()
 
+        def initCtx = new Object()
         when:
-        sut.visit(course, visitMeth)
+        sut.visit(course, visitMeth, initCtx)
 
         then:
-        1 * courseSyncService.visit(course, visitMeth)
+        1 * courseSyncService.visit(initCtx, course, visitMeth)
     }
 }

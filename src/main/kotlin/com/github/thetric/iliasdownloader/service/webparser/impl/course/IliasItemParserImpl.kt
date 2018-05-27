@@ -3,7 +3,6 @@ package com.github.thetric.iliasdownloader.service.webparser.impl.course
 import com.github.thetric.iliasdownloader.service.model.Course
 import com.github.thetric.iliasdownloader.service.model.CourseFile
 import com.github.thetric.iliasdownloader.service.model.CourseFolder
-import com.github.thetric.iliasdownloader.service.model.IliasItem
 import com.github.thetric.iliasdownloader.service.webparser.impl.IliasItemIdStringParsingException
 import org.jsoup.nodes.Element
 import java.time.LocalDateTime
@@ -37,7 +36,7 @@ class IliasItemParserImpl(
         return itemRow[0] == '-'
     }
 
-    override fun parseFolder(parent: IliasItem, itemRow: String): CourseFolder {
+    override fun parseFolder(currentUrl: String, itemRow: String): CourseFolder {
         val firstPosSeparator = itemRow.indexOf(ROW_SEPARATOR)
         val secondPosSeparator = itemRow.indexOf(
             ROW_SEPARATOR,
@@ -46,12 +45,11 @@ class IliasItemParserImpl(
         val parsedLink = parseLink(itemRow, secondPosSeparator)
         return CourseFolder(
             name = parsedLink.name!!,
-            url = resolveItemLink(parent, parsedLink.url!!),
-            parent = parent
+            url = resolveItemLink(currentUrl, parsedLink.url!!)
         )
     }
 
-    override fun parseFile(parent: IliasItem, itemRow: String): CourseFile {
+    override fun parseFile(currentUrl: String, itemRow: String): CourseFile {
         val firstPosSeparator = itemRow.indexOf(ROW_SEPARATOR)
         val secondPosSeparator = itemRow.indexOf(
             ROW_SEPARATOR,
@@ -61,8 +59,7 @@ class IliasItemParserImpl(
         val parsedLinkName = parseLink(itemRow, secondPosSeparator)
         return CourseFile(
             name = parsedLinkName.name!!,
-            url = resolveItemLink(parent, parsedLinkName.url!!),
-            parent = parent,
+            url = resolveItemLink(currentUrl, parsedLinkName.url!!),
             modified = parseLastModified(
                 itemRow,
                 firstPosSeparator,
@@ -73,8 +70,8 @@ class IliasItemParserImpl(
     }
 }
 
-private fun resolveItemLink(parent: IliasItem, relUrl: String): String {
-    return "${parent.url}/$relUrl"
+private fun resolveItemLink(parentUrl: String, relUrl: String): String {
+    return "$parentUrl/$relUrl"
 }
 
 val sizeSeparatorRegex = ",".toRegex()

@@ -1,13 +1,12 @@
 package com.github.thetric.iliasdownloader.service.webparser.impl
 
-import com.github.thetric.iliasdownloader.service.IliasItemVisitor
+import com.github.thetric.iliasdownloader.service.ContextAwareIliasItemVisitor
 import com.github.thetric.iliasdownloader.service.IliasService
 import com.github.thetric.iliasdownloader.service.model.Course
 import com.github.thetric.iliasdownloader.service.model.CourseFile
 import com.github.thetric.iliasdownloader.service.model.LoginCredentials
 import com.github.thetric.iliasdownloader.service.webparser.impl.course.CourseSyncService
 import com.github.thetric.iliasdownloader.service.webparser.impl.webclient.IliasWebClient
-
 import java.io.InputStream
 
 /**
@@ -26,15 +25,15 @@ class WebIliasService(
         iliasWebClient.login(loginCredentials)
     }
 
-    override fun logout() {
-        iliasWebClient.logout()
-    }
+    override fun logout() = iliasWebClient.logout()
 
-    override fun getJoinedCourses(): Collection<Course> {
-        return courseSyncService.joinedCourses
-    }
+    override fun getJoinedCourses() = courseSyncService.joinedCourses
 
-    override fun visit(courseItem: Course, itemVisitor: IliasItemVisitor) {
-        courseSyncService.visit(courseItem, itemVisitor)
+    override fun <C> visit(
+        courseItem: Course,
+        itemVisitor: ContextAwareIliasItemVisitor<C>,
+        initialContext: C
+    ) {
+        courseSyncService.visit(initialContext, courseItem, itemVisitor)
     }
 }
