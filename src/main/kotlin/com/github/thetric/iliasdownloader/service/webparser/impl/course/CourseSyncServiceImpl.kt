@@ -113,8 +113,9 @@ class CourseSyncServiceImpl(
     ) {
         if (itemParser.isFolder(itemRow)) {
             val courseFolder = itemParser.parseFolder(currentUrl, itemRow)
-            itemVisitor.handleFolder(parentContext, courseFolder)
-            visit(parentContext, courseFolder, itemVisitor)
+            val newParentCtx =
+                itemVisitor.handleFolder(parentContext, courseFolder)
+            visit(newParentCtx, courseFolder, itemVisitor)
         }
 
         // assume it is a file
