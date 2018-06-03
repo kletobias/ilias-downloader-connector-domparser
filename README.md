@@ -1,6 +1,5 @@
-[![Travis](https://img.shields.io/travis/thetric/ilias-downloader-connector-domparser/master.svg?style=flat-square)](https://travis-ci.org/thetric/ilias-downloader-connector-domparser)
+[![CircleCI](https://circleci.com/gh/thetric/ilias-downloader-connector-domparser.svg?style=shield)](https://circleci.com/gh/thetric/ilias-downloader-connector-domparser)
 [![GitHub release](https://img.shields.io/github/release/thetric/ilias-downloader-connector-domparser.svg?style=flat-square)](https://github.com/thetric/ilias-downloader-connector-domparser/releases)
-
 # Ilias Downloader - Connector (DOM parser)
 
 Implementation of the [Ilias Downloader Connector API](https://github.com/thetric/ilias-downloader-connector-api) by accessing the web pages.
